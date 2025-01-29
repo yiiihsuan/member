@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  member-db:
+    build:
+      context: .  # 使用當前目錄的 Dockerfile-member
+      dockerfile: Dockerfile-member
+    container_name: mysql-container  # 容器名稱
+    ports:
+      - "3306:3306"  # 映射 MySQL 的 3306 端口

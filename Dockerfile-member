@@ -1,0 +1,12 @@
+# 使用官方 MySQL 映像
+FROM mysql:8.0
+
+# 設定環境變數，初始化資料庫和 root 密碼
+ENV MYSQL_ROOT_PASSWORD="root"
+ENV MYSQL_DATABASE="database"
+
+# 複製初始化 SQL 腳本到 Docker 映像中
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# 默認端口
+EXPOSE 3306
