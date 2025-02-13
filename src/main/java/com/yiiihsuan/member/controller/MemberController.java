@@ -32,7 +32,6 @@ public class MemberController {
         }
     }
 
-    // restful, 這隻要幹麻, 用查詢 用id 或email 還是選一個就好, 可以分兩隻
     @GetMapping("/id/{id}")
     public ResponseEntity<MemberDo> findMemberById(@PathVariable("id") Long id) {
         try {
@@ -44,8 +43,8 @@ public class MemberController {
         }
     }
 
-    @GetMapping("/email/{email}")
-    public ResponseEntity<MemberDo> findMemberByEMail(@PathVariable("email") String email) {
+    @GetMapping("/email")
+    public ResponseEntity<MemberDo> findMemberByEMail(@RequestParam("email") String email) {
         try {
             // 調用 Service 層的 findMember 方法
             MemberDo member = memberService.findMemberByEmail(email);
@@ -54,11 +53,6 @@ public class MemberController {
             return ResponseEntity.badRequest().body(null); // 請求不合法時，返回 400
         }
     }
-
-
-
-
-
 
 }
 
